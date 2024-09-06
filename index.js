@@ -5,7 +5,14 @@ const db = require('./database');
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://blog-post-frontend-beige.vercel.app', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // GET all posts
